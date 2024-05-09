@@ -63,17 +63,15 @@ export class ProductlistComponent implements OnInit {
     }
   ];
   listProduct: IProduct[] = [];
-  filterValue: string = ''; // Từ khóa tìm kiếm
+  filterValue: string = '';
 
   constructor() { }
 
   ngOnInit(): void {
-    // Sao chép danh sách sản phẩm vào listProduct để giữ nguyên danh sách gốc
     this.listProduct = [...this.products];
   }
 
   filter() {
-    // Lọc danh sách sản phẩm dựa trên từ khóa tìm kiếm và lưu kết quả vào một mảng mới
     this.products = this.listProduct.filter(p =>
       p.productName.toLowerCase().includes(this.filterValue.toLowerCase())
     );
