@@ -6,7 +6,8 @@
         <div class="card-body ">
             <div class="row mb-4 mt-2">
                 <label class="col-2 ">Filter:</label>
-                <input type="text" class="col-3 border border-gray-300 rounded-md py-1 px-2 ">
+                <input type="text" class="col-3 border border-gray-300 rounded-md py-1 px-2 " [(ngModel)]='filterValue'
+                    (input)='filter()'>
                 <div class="col-7"></div>
             </div>
             <div class="row mb-4">

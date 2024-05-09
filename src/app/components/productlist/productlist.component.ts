@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { IProduct } from '../../entities/products';
-
+import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-productlist',
   standalone: true,
-  imports: [CommonModule, NgFor],
+  imports: [CommonModule, NgFor, FormsModule],
   templateUrl: './productlist.component.html',
   styleUrl: './productlist.component.css'
 })
