@@ -10,6 +10,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './productlist.component.css'
 })
 export class ProductlistComponent implements OnInit {
+  showImage: boolean = true;
+
+  toggleImageVisibility(): void {
+    this.showImage = !this.showImage;
+  }
   products: IProduct[] = [
     {
       "productId": 1,

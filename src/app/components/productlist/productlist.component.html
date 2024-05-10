@@ -16,19 +16,19 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>
-                            Image
-                        </th>
+                        <th>Image</th>
                         <th>Product</th>
                         <th>Price</th>
                         <th>Code</th>
-                        <th>Available </th>
+                        <th>Available</th>
                         <th>5 Star Rating</th>
+                        <th>Show/Hide</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let product of products" class="bg-gray-100">
-                        <td><img [src]="product.imageUrl" alt="Product Image" style="max-width: 60px;"></td>
+                        <td><img [src]="product.imageUrl" alt="Product Image"
+                                [style.display]="showImage ? 'block' : 'none'" style="max-width: 60px;"></td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.productName }}</td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
@@ -43,6 +43,9 @@
                                     <span class="text-yellow-400">&#9733;</span>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                            <button (click)="toggleImageVisibility()">Click</button>
                         </td>
                     </tr>
                 </tbody>
