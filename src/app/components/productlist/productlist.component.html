@@ -5,9 +5,9 @@
         </div>
         <div class="card-body ">
             <div class="row mb-4 mt-2">
-                <label class="col-2 ">Filter:</label>
-                <input type="text" class="col-3 border border-gray-300 rounded-md py-1 px-2 " [(ngModel)]='filterValue'
-                    (input)='filter()'>
+                <label class="col-2">Filter:</label>
+                <input type="text" class="col-3 border border-gray-300 rounded-md py-1 px-2 ml-4"
+                    [(ngModel)]='filterValue' (input)='filter()'>
                 <div class="col-7"></div>
             </div>
             <div class="row mb-4">
@@ -34,8 +34,7 @@
                         <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
                         <td>
-                            <div class="crop" *ngIf="product.starRating !== undefined"
-                                [style.width.px]="product.starRating*18" title="rating">
+                            <div class="crop" [style.width.px]="product.starRating*90/5" title="rating">
                                 <div class="w-90">
                                     <span class="text-yellow-400">&#9733;</span>
                                     <span class="text-yellow-400">&#9733;</span>
