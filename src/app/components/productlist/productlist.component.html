@@ -20,9 +20,9 @@
                             Image
                         </th>
                         <th>Product</th>
+                        <th>Price</th>
                         <th>Code</th>
-                        <th>Available</th>
-                        <th>Price </th>
+                        <th>Available </th>
                         <th>5 Star Rating</th>
                     </tr>
                 </thead>
@@ -30,8 +30,8 @@
                     <tr *ngFor="let product of products" class="bg-gray-100">
                         <td><img [src]="product.imageUrl" alt="Product Image" style="max-width: 60px;"></td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.productName }}</td>
-                        <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
+                        <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
                         <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
                         <td>
                             <div class="crop" [style.width.px]="product.starRating*90/5" title="rating">
