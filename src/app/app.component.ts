@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule, NgFor } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Inventor } from './entities/inventor';
 import { IProduct } from './entities/products';
 import { HeaderComponent } from './components/header/header.component';

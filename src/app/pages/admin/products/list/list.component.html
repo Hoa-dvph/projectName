@@ -1,0 +1,45 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Code</th>
+            <th>Available</th>
+            <th>5 Star Rating</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products" class="bg-gray-100">
+            <td class="border px-4 py-2 text-center mt-2">{{ product.productName }}</td>
+            <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
+            <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
+            <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
+            <td>
+                <div class="crop" [style.width.px]="product.starRating*90/5" title="rating">
+                    <div class="w-90">
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                        <span class="text-yellow-400">&#9733;</span>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="container">
+    <div class="card">
+        <div class="card-header">Product Info</div>
+        @for (product of products; track product.productId) {
+        <div>
+            <li>{{ product.productName }}</li>
+
+            <button class="btn btn-danger">Delete</button>
+        </div>
+        } @empty {
+        <li>There are no items.</li>
+        }
+    </div>
+</div>
