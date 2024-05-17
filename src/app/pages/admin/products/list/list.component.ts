@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 export class ProductListComponent {
   products: IProduct[] = [];
 
+
   productService = inject(ProductService);
 
   // ngOnInit
@@ -24,7 +25,23 @@ export class ProductListComponent {
       .getAllProduct()
       .subscribe((products) => (this.products = products));
   }
-  // ngDoCheck() {
-  //   console.log(this.products);
-  // }
+  deleteProduct(product: IProduct) {
+    if (confirm('Are you sure you want to delete this product?')) {
+      this.productService.deleteProduct(product.productId).subscribe(
+        () => {
+          // Xóa sản phẩm thành công, cập nhật danh sách sản phẩm
+          this.products = this.products.filter(p => p !== product);
+          alert('Product deleted successfully!');
+        },
+        (error) => {
+          console.error('Error deleting product:', error);
+          alert('An error occurred while deleting the product.');
+        }
+      );
+
+      // ngDoCheck() {
+      //   console.log(this.products);
+      // }
+    }
+  }
 }

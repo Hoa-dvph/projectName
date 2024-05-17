@@ -4,9 +4,9 @@ import { ProductListComponent } from '../../pages/admin/products/list/list.compo
 @Component({
   selector: 'app-admin-layout',
   standalone: true,
-  imports: [ProductListComponent],
+  imports: [ProductListComponent], // Corrected import statement
   templateUrl: './admin-layout.component.html',
-  styleUrl: './admin-layout.component.css'
+  styleUrls: ['./admin-layout.component.css']
 })
 export class AdminLayoutComponent {
 

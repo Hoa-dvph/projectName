@@ -6,12 +6,13 @@ import { Inventor } from './entities/inventor';
 import { IProduct } from './entities/products';
 import { HeaderComponent } from './components/header/header.component';
 import { ProductlistComponent } from './components/productlist/productlist.component';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NgFor, HeaderComponent, ProductlistComponent],
+  imports: [CommonModule, RouterOutlet, NgFor, HeaderComponent, ProductlistComponent, FormsModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

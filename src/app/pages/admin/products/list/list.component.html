@@ -1,4 +1,4 @@
-<div class="container mx-auto ">
+<div class="container mx-auto">
     <h2 class="font-bold uppercase mb-4 mt-4">DANH SÁCH SẢN PHẨM</h2>
     <table class="table w-full">
         <thead>
@@ -8,7 +8,8 @@
                 <th>Price</th>
                 <th>Code</th>
                 <th>Available</th>
-                <th>5 Star Rating</th>
+                <!-- <th>5 Star Rating</th> -->
+                <th>Action</th> <!-- Thêm cột Action -->
             </tr>
         </thead>
         <tbody>
@@ -18,7 +19,7 @@
                 <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
                 <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
                 <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
-                <td>
+                <!-- <td>
                     <div class="crop" [style.width.px]="product.starRating*90/5" title="rating">
                         <div class="w-90">
                             <span class="text-yellow-400">&#9733;</span>
@@ -28,21 +29,20 @@
                             <span class="text-yellow-400">&#9733;</span>
                         </div>
                     </div>
+                </td> -->
+                <td> <!-- Thêm nút View, Edit và Delete -->
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        View
+                    </button>
+                    <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                        Edit
+                    </button>
+                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        (click)="deleteProduct(product)">
+                        Delete
+                    </button>
                 </td>
             </tr>
         </tbody>
     </table>
 </div>
-
-<!-- <div class="card">
-    <div class="card-header">Product Info</div>
-    @for (product of products; track product.productId) {
-    <div>
-        <li>{{ product.productName }}</li>
-
-        <button class="btn btn-danger">Delete</button>
-    </div>
-    } @empty {
-    <li>There are no items.</li>
-    }
-</div> -->
