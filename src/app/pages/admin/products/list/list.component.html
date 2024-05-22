@@ -1,5 +1,5 @@
-<div class="container mx-auto">
-    <h2 class="font-bold uppercase mb-4 mt-4">DANH SÁCH SẢN PHẨM</h2>
+<div class="container my-4 text-center">
+    <h2 class="font-bold uppercase mb-4 mt-4 my-5">DANH SÁCH SẢN PHẨM</h2>
     <table class="table w-full">
         <thead>
             <tr>
@@ -8,8 +8,7 @@
                 <th>Price</th>
                 <th>Code</th>
                 <th>Available</th>
-                <!-- <th>5 Star Rating</th> -->
-                <th>Action</th> <!-- Thêm cột Action -->
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -19,19 +18,9 @@
                 <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
                 <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
                 <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
-                <!-- <td>
-                    <div class="crop" [style.width.px]="product.starRating*90/5" title="rating">
-                        <div class="w-90">
-                            <span class="text-yellow-400">&#9733;</span>
-                            <span class="text-yellow-400">&#9733;</span>
-                            <span class="text-yellow-400">&#9733;</span>
-                            <span class="text-yellow-400">&#9733;</span>
-                            <span class="text-yellow-400">&#9733;</span>
-                        </div>
-                    </div>
-                </td> -->
-                <td> <!-- Thêm nút View, Edit và Delete -->
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                <td>
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                        [routerLink]="['/products', product.id]">
                         View
                     </button>
                     <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">

@@ -1,0 +1,5 @@
+<h2>Thông tin sản phẩm {{product?.productName}}</h2>
+@if (product) {
+<img [src]="product.imageUrl" width="1000px" />
+}
+<h1 *ngIf="product">{{ product.description }}</h1>
