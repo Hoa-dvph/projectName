@@ -1,37 +1,50 @@
 <div class="container my-4 text-center">
     <h2 class="font-bold uppercase mb-4 mt-4 my-5">DANH SÁCH SẢN PHẨM</h2>
-    <table class="table w-full">
-        <thead>
-            <tr>
-                <th>Image</th>
-                <th>Product</th>
-                <th>Price</th>
-                <th>Code</th>
-                <th>Available</th>
-                <th>Action</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let product of products" class="bg-gray-100">
-                <td><img [src]="product.imageUrl" alt="Product Image" style="max-width: 60px;"></td>
-                <td class="border px-4 py-2 text-center mt-2">{{ product.productName }}</td>
-                <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
-                <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
-                <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
-                <td>
-                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                        [routerLink]="['/products', product.id]">
-                        View
-                    </button>
-                    <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
-                        Edit
-                    </button>
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                        (click)="deleteProduct(product)">
-                        Delete
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="card-body ">
+        <div class="row mb-4 mt-2">
+            <label class="col-2">Filter:</label>
+            <input type="text" class="col-3 border border-gray-300 rounded-md py-1 px-2 ml-4" [(ngModel)]='filterValue'
+                (input)='filter()'>
+            <div class="col-7"></div>
+        </div>
+        <div class="row mb-4">
+            <h2 class="col-12 text-2xl font-bold mt-2">Filter by: </h2>
+        </div>
+        <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Code</th>
+                    <th>Available</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products | paginate: { itemsPerPage: 6, currentPage: page }"
+                    class="bg-gray-100">
+                    <td><img [src]="product.imageUrl" alt="Product Image" style="max-width: 60px;"></td>
+                    <td class="border px-4 py-2 text-center mt-2">{{ product.productName }}</td>
+                    <td class="border px-4 py-2 text-center mt-2">{{ product.price }}</td>
+                    <td class="border px-4 py-2 text-center mt-2">{{ product.productCode }}</td>
+                    <td class="border px-4 py-2 text-center mt-2">{{ product.description }}</td>
+                    <td>
+                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            [routerLink]="['/products', product.id]">
+                            View
+                        </button>
+                        <button class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">
+                            Edit
+                        </button>
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                            (click)="deleteProduct(product)">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
 </div>
