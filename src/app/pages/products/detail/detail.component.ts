@@ -1,14 +1,14 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { ProductService } from '../../../service/product.service';
 import { IProduct } from '../../../entities/products';
 
 @Component({
   selector: 'app-detail',
   standalone: true,
-  imports: [NgIf],
+  imports: [NgIf, NgFor],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.css',
 })

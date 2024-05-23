@@ -1,5 +1,112 @@
-<h2>Thông tin sản phẩm {{product?.productName}}</h2>
-@if (product) {
-<img [src]="product.imageUrl" width="1000px" />
-}
-<h1 *ngIf="product">{{ product.description }}</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết sản phẩm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+        }
+
+        img {
+            max-width: 800px;
+            height: auto;
+            margin-right: 20px;
+            margin: 20px;
+        }
+
+        .product-info {
+            flex: 1;
+        }
+
+        h1 {
+            color: #555;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 15px;
+        }
+
+        .rating {
+            color: orange;
+            font-size: 24px;
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button img {
+            width: 20px;
+            height: auto;
+            margin-right: 5px;
+        }
+
+        .description {
+            margin-top: 20px;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>{{product?.productName}}</h2>
+    <div class="container" *ngIf="product">
+        <img [src]="product.imageUrl" alt="{{ product.productName }}" />
+        <div class="product-info">
+            <h2>{{product.productName}}</h2>
+            <p><strong>Giá:</strong> <del>{{ product.price }}</del></p>
+            <p><strong>Đánh giá sao:</strong>
+                <span class="rating">
+                    <span *ngFor="let star of [1, 2, 3, 4, 5]">
+                        <ng-container *ngIf="star <= product.starRating; else emptyStar">&#9733;</ng-container>
+                        <ng-template #emptyStar>&#9734;</ng-template>
+                    </span>
+                </span>
+            </p>
+            <p><strong>Mã sản phẩm:</strong> {{ product.productCode }}</p>
+            <p><strong>Ngày phát hành:</strong> {{ product.releaseDate }}</p>
+            <div class="button-container">
+                <button><span>➕</span> Thêm vào giỏ hàng</button>
+                <button><span>💳</span> Tiến hành thanh toán</button>
+                <button><span>🚚</span> Theo dõi đơn hàng</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
