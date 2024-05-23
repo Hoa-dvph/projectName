@@ -22,40 +22,59 @@ export class ProductListComponent implements OnInit {
   productService = inject(ProductService);
 
   ngOnInit() {
+    this.loadProducts();
+  }
+
+  loadProducts() {
     this.productService.getAllProducts().subscribe(
       (products) => {
         this.products = products;
         this.listProduct = products;
+        this.updatePage();
       },
       (error) => {
-        console.error('Error fetching products:', error);
-        alert('An error occurred while fetching the product list.');
+        console.error('Lỗi khi lấy dữ liệu sản phẩm:', error);
+        alert('Đã xảy ra lỗi khi lấy danh sách sản phẩm. Vui lòng thử lại sau.');
       }
     );
   }
 
   deleteProduct(product: IProduct) {
-    if (confirm('Are you sure you want to delete this product?')) {
+    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')) {
       this.productService.deleteProduct(product.id).subscribe(
         () => {
-          this.products = this.products.filter(p => p !== product);
-          this.listProduct = this.listProduct.filter(p => p !== product);
+          this.listProduct = this.listProduct.filter(p => p.id !== product.id);
+          this.updatePage();
+          alert('Xóa sản phẩm thành công.');
         },
         (error) => {
-          console.error('Error deleting product:', error);
-          alert('An error occurred while deleting the product.');
+          console.error('Lỗi khi xóa sản phẩm:', error);
+          alert('Đã xảy ra lỗi khi xóa sản phẩm. Vui lòng thử lại sau.');
         }
       );
     }
   }
 
+  updatePage() {
+    const start = (this.page - 1) * 10;
+    const end = start + 10;
+    this.products = this.listProduct.slice(start, end);
+
+    if (this.products.length === 0 && this.page > 1) {
+      this.page--;
+      this.updatePage();
+    }
+  }
+
   filter() {
     if (this.filterValue) {
-      this.products = this.listProduct.filter(p =>
+      this.page = 1;
+      this.listProduct = this.listProduct.filter(p =>
         p.productName.toLowerCase().includes(this.filterValue.toLowerCase())
       );
     } else {
-      this.products = [...this.listProduct];
+      this.loadProducts();
     }
+    this.updatePage();
   }
 }
